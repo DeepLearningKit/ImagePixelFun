@@ -15,6 +15,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         let image:UIImage = UIImage(named: "images.jpeg")!
         
+        for i in 0...100 {
+            for j in 0...100 {
+                image.setPixelColorAtPoint(CGPoint(x: i,y: j), color: UIImage.RawColorType(255,0,0,100))
+            }
+        }
+
+        
         // Displaying original image.
         var originalImageView:UIImageView = UIImageView(frame: CGRectMake(20, 20, image.size.width, image.size.height))
         originalImageView.image = image
@@ -24,6 +31,7 @@ class ViewController: UIViewController {
         var imageView:UIImageView = UIImageView(frame: CGRectMake(20, CGRectGetMaxY(originalImageView.frame) + 10, image.size.width, image.size.height))
         
         imageView.image = image.getGrayScale()
+
         self.view.addSubview(imageView)
         
         // Modify image colors.
@@ -32,7 +40,7 @@ class ViewController: UIViewController {
             
              let avg = (UInt32(redColor) + UInt32(greenColor) + UInt32(blueColor))/3
             if (Double(UInt32(redColor)) > (Double(avg) * 1.8)) {
-                return (0,0,200,255)
+                return (0,200,100,255)
             }
             else {
                 return (redColor,greenColor,blueColor,alphaValue)

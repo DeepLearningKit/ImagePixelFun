@@ -53,13 +53,13 @@ private extension UIImage {
 // Internal functions exposed.Can be public.
 
 extension  UIImage {
-    typealias RawColorType = (newRedColor:UInt8, newgreenColor:UInt8, newblueColor:UInt8,  newalphaValue:UInt8)
+    public typealias RawColorType = (newRedColor:UInt8, newgreenColor:UInt8, newblueColor:UInt8,  newalphaValue:UInt8)
     
     
     /*
     Change the color of pixel at a certain point.If you want more control try block based method to modify pixels.
     */
-    func setPixelColorAtPoint(point:CGPoint, color: RawColorType) -> UIImage? {
+    public func setPixelColorAtPoint(point:CGPoint, color: RawColorType) -> UIImage? {
         self.sanitizePoint(point)
         let inImage:CGImageRef = self.CGImage!
         let context = self.createARGBBitmapContext(inImage)
@@ -241,10 +241,10 @@ extension  UIImage {
                 let blue = dataType[offset+3]
 //                let (newRedColor:UInt8, newGreenColor:UInt8?, newBlueColor:UInt8?, newAlphaValue:UInt8?)  =  closure(point: CGPointMake(CGFloat(x), CGFloat(y)), redColor: red, greenColor: green,  blueColor: blue, alphaValue: alpha)
                  let (newRedColor, newGreenColor, newBlueColor, newAlphaValue)  =  closure(point: CGPointMake(CGFloat(x), CGFloat(y)), redColor: red, greenColor: green,  blueColor: blue, alphaValue: alpha)
-                //dataType[offset] = newAlphaValue
-                //dataType[offset + 1] = newRedColor
-                //dataType[offset + 2] = newGreenColor
-                //dataType[offset + 3] = newBlueColor
+                dataType[offset] = newAlphaValue
+                dataType[offset + 1] = newRedColor
+                dataType[offset + 2] = newGreenColor
+                dataType[offset + 3] = newBlueColor
             }
         }
         
