@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         
         for i in 0...100 {
             for j in 0...100 {
-                img = img.setPixelColorAtPoint(CGPoint(x: i,y: j), color: UIImage.RawColorType(255,0,0,100))!
+                img = img.setPixelColorAtPoint(CGPoint(x: i,y: j), color: UIImage.RawColorType(255,0,0,255))!
             }
         }
 
