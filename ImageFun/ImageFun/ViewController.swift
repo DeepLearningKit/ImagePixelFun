@@ -13,15 +13,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let image:UIImage = UIImage(named: "images.jpeg")!
+        var image:UIImage = UIImage(named: "images.jpeg")!
+        
+        var img = image
         
         for i in 0...100 {
             for j in 0...100 {
-                image.setPixelColorAtPoint(CGPoint(x: i,y: j), color: UIImage.RawColorType(255,0,0,100))
+                img = img.setPixelColorAtPoint(CGPoint(x: i,y: j), color: UIImage.RawColorType(255,0,0,100))!
             }
         }
 
-        
+        image = img
         // Displaying original image.
         var originalImageView:UIImageView = UIImageView(frame: CGRectMake(20, 20, image.size.width, image.size.height))
         originalImageView.image = image
