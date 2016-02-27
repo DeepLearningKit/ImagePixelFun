@@ -15,6 +15,20 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         var image:UIImage = UIImage(named: "images.jpeg")!
         
+        let height = image.size.height
+        let width = image.size.width
+        let size = CGSize(width: width, height: height)
+        let rect = CGRect(origin: CGPoint(x: 0,y: 0), size: size)
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        UIColor.blueColor().setFill() // or custom color
+        UIRectFill(rect)
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+//        image = UIImage(rect: rect)
+        
+        
         var img = image
         
         var color:UIColor!
@@ -28,11 +42,11 @@ class ViewController: UIViewController {
                 var b: CGFloat = 0
                 var a: CGFloat = 0
                 color.getRed(&r, green:&g, blue:&b, alpha:&a)
-                print("x = \(i), y = \(j)")
-                print(r*255.0)
-                print(g*255.0)
-                print(b*255.0)
-                print(a*255.0)
+               // print("x = \(i), y = \(j)")
+               // print(r*255.0)
+               // print(g*255.0)
+//                print(b*255.0)
+//                print(a*255.0)
 
             }
         }
