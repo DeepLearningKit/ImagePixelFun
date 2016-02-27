@@ -17,9 +17,23 @@ class ViewController: UIViewController {
         
         var img = image
         
+        var color:UIColor!
+        
         for i in 0...100 {
             for j in 0...100 {
                 img = img.setPixelColorAtPoint(CGPoint(x: i,y: j), color: UIImage.RawColorType(255,0,0,255))!
+                color = img.getPixelColorAtLocation(CGPoint(x:i, y:j))
+                var r:CGFloat = 0
+                var g: CGFloat = 0
+                var b: CGFloat = 0
+                var a: CGFloat = 0
+                color.getRed(&r, green:&g, blue:&b, alpha:&a)
+                print("x = \(i), y = \(j)")
+                print(r*255.0)
+                print(g*255.0)
+                print(b*255.0)
+                print(a*255.0)
+
             }
         }
 
